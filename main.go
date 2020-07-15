@@ -61,7 +61,7 @@ func (e Expo) installExpoCLI() error {
 
 // Login with your Expo account
 func (e Expo) login(userName string, password stepconf.Secret) error {
-	args := []string{"login", "--non-interactive", "-u", userName, "-p", string(password), "force"}
+	args := []string{"login", "--non-interactive", "-u", userName, "-p", string(password), "-force"}
 
 	cmd := command.New("expo", args...)
 	cmd.SetStdout(os.Stdout)
@@ -76,7 +76,7 @@ func (e Expo) login(userName string, password stepconf.Secret) error {
 
 // Logout from your Expo account
 func (e Expo) logout() error {
-	cmd := command.New("expo", "logout", "--non-interactive", "force")
+	cmd := command.New("expo", "logout", "--non-interactive", "-force")
 	cmd.SetStdout(os.Stdout)
 	cmd.SetStderr(os.Stderr)
 
@@ -86,7 +86,7 @@ func (e Expo) logout() error {
 
 // Eject command creates Xcode and Android Studio projects for your app.
 func (e Expo) eject() error {
-	args := []string{"eject", "--non-interactive", "--eject-method", string(e.Method), "force"}
+	args := []string{"eject", "--non-interactive", "--eject-method", string(e.Method), "-force"}
 
 	cmd := command.New("expo", args...)
 	cmd.SetStdout(os.Stdout)
@@ -100,7 +100,7 @@ func (e Expo) eject() error {
 }
 
 func (e Expo) publish() error {
-	args := []string{"publish", "--non-interactive", "force"}
+	args := []string{"publish", "--non-interactive", "-force"}
 
 	cmd := command.New("expo", args...)
 	cmd.SetStdout(os.Stdout)
