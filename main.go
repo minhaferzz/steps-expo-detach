@@ -61,7 +61,7 @@ func (e Expo) installExpoCLI() error {
 
 // Login with your Expo account
 func (e Expo) login(userName string, password stepconf.Secret) error {
-	args := []string{"login", "--non-interactive", "-u", userName, "-p", string(password), "--force"}
+	args := []string{"login", "--non-interactive", "-u", userName, "-p", string(password)}
 
 	cmd := command.New("expo", args...)
 	cmd.SetStdout(os.Stdout)
@@ -76,7 +76,7 @@ func (e Expo) login(userName string, password stepconf.Secret) error {
 
 // Logout from your Expo account
 func (e Expo) logout() error {
-	cmd := command.New("expo", "logout", "--non-interactive", "--force")
+	cmd := command.New("expo", "logout", "--non-interactive")
 	cmd.SetStdout(os.Stdout)
 	cmd.SetStderr(os.Stderr)
 
